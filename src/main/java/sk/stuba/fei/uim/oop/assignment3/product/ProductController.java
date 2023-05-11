@@ -11,42 +11,56 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/product")
 public class ProductController {
+
+    private final IProductService productService;
+
     @Autowired
-    private IProductService service;
+    public ProductController(IProductService productService) {
+        this.productService = productService;
+    }
 
     @GetMapping()
     public List<ProductResponse> getAllProducts() {
-        return this.service.getAll().stream().map(ProductResponse::new).collect(Collectors.toList());
+        List<Product> products = productService.getAll();
+        return products.stream()
+                .map(ProductResponse::new)
+                .collect(Collectors.toList());
     }
 
     @PostMapping()
     public ResponseEntity<ProductResponse> addProduct(@RequestBody ProductRequest request) {
-        return new ResponseEntity<>(new ProductResponse(this.service.create(request)), HttpStatus.CREATED);
+        Product product = productService.create(request);
+        ProductResponse response = new ProductResponse(product);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping("/{id}")
     public ProductResponse getProductById(@PathVariable("id") Long id) {
-        return new ProductResponse(this.service.getProductById(id));
+        Product product = productService.getProductById(id);
+        return new ProductResponse(product);
     }
 
     @PutMapping("/{id}")
     public ProductResponse updateProduct(@PathVariable("id") Long id, @RequestBody UpdateBody updateBody) {
-        return new ProductResponse(this.service.updateProduct(id, updateBody));
+        Product product = productService.updateProduct(id, updateBody);
+        return new ProductResponse(product);
     }
 
     @DeleteMapping("/{id}")
     public void deleteProduct(@PathVariable("id") Long id) {
-        this.service.deleteProduct(id);
+        productService.deleteProduct(id);
     }
 
     @GetMapping("/{id}/amount")
     public AmountResponse getProductAmount(@PathVariable("id") Long id) {
-        return new AmountResponse(this.service.getProductAmount(id));
+        int amount = productService.getProductAmount(id);
+        return new AmountResponse(amount);
     }
 
     @PostMapping("/{id}/amount")
     public AmountResponse incrementAmount(@PathVariable("id") Long id, @RequestBody AmountRequest amountRequest) {
-        return new AmountResponse(this.service.incrementAmount(id, amountRequest));
+        int newAmount = productService.incrementAmount(id, amountRequest);
+        return new AmountResponse(newAmount);
     }
 
 }
