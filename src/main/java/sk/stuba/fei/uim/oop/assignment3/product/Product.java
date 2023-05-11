@@ -1,7 +1,6 @@
 package sk.stuba.fei.uim.oop.assignment3.product;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
@@ -12,7 +11,6 @@ import javax.persistence.Id;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 public class Product {
 
     @Id
@@ -22,5 +20,5 @@ public class Product {
     private String description;
     private int amount;
     private String unit;
-    private double price;
+    private Double price;
 }

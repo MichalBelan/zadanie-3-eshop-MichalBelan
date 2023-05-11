@@ -16,10 +16,10 @@ public class ShoppingCartResponse {
     private List<ItemResponse> shoppingList = new ArrayList<>();
     private boolean payed;
 
-
     public ShoppingCartResponse(ShoppingCart shoppingCart) {
         this.id = shoppingCart.getId();
         this.shoppingList.addAll(shoppingCart.getShoppingList().stream().map(ItemResponse::new).collect(Collectors.toList()));
         this.payed = shoppingCart.isPayed();
     }
+
 }

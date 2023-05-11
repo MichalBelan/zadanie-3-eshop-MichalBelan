@@ -15,19 +15,19 @@ import sk.stuba.fei.uim.oop.assignment3.product.Product;
 import java.util.Optional;
 @Service
 public class ShoppingCartService implements IShoppingCartService {
-    private final IShoppingCartRepository shoppingCartRepository;
-    private final ItemRepository cartItemsRepository;
-    private final IProductService productService;
+    private IShoppingCartRepository shoppingCartRepository;
 
     @Autowired
-    public ShoppingCartService(IShoppingCartRepository shoppingCartRepository,
-                               ItemRepository cartItemsRepository,
-                               IProductService productService) {
-        this.shoppingCartRepository = shoppingCartRepository;
-        this.cartItemsRepository = cartItemsRepository;
-        this.productService = productService;
-    }
+    private ItemRepository cartItemsRepository;
 
+    @Autowired
+    private IProductService productService;
+
+
+    @Autowired
+    public ShoppingCartService(IShoppingCartRepository repository) {
+        this.shoppingCartRepository = repository;
+    }
 
     @Override
     public ShoppingCart create() {
@@ -51,35 +51,35 @@ public class ShoppingCartService implements IShoppingCartService {
 
     @Override
     public ShoppingCart addProductToCart(Long id, ItemRequest item) {
-        Product product = this.productService.getById(item.getProductId());
+        Product product = this.productService.getProductById(item.getProductId());
         ShoppingCart cart = getShoppingCartById(id);
         if (cart.isPayed() || product.getAmount() - item.getAmount() < 0) {
             throw new BadRequestException();
         }
         boolean found = false;
-        Item i = new Item();
+        Item cartItem = new Item();
         for (Item ci : cart.getShoppingList()) {
             if (ci.getProductId().equals(item.getProductId())) {
                 found = true;
-                i = ci;
+                cartItem = ci;
                 break;
             }
         }
 
         if (found) {
-            item.setAmount(item.getAmount() + item.getAmount());
+            cartItem.setAmount(cartItem.getAmount() + item.getAmount());
 
 
         } else {
-            item.setProductId(item.getProductId());
-            item.setAmount(item.getAmount());
-            cart.getShoppingList().add(i);
+            cartItem.setProductId(item.getProductId());
+            cartItem.setAmount(item.getAmount());
+            cart.getShoppingList().add(cartItem);
         }
-        this.cartItemsRepository.save(i);
+        this.cartItemsRepository.save(cartItem);
 
         product.setAmount(product.getAmount() - item.getAmount());
 
-        this.cartItemsRepository.save(i);
+        this.cartItemsRepository.save(cartItem);
         return cart;
 
 
@@ -91,9 +91,9 @@ public class ShoppingCartService implements IShoppingCartService {
         if (cart.isPayed()) {
             throw new BadRequestException();
         }
-        Double price = 0d;
+        Double price = 0D;
         for (Item item : cart.getShoppingList()) {
-            Product product = this.productService.getById(item.getProductId());
+            Product product = this.productService.getProductById(item.getProductId());
             price += product.getPrice() * item.getAmount();
         }
 
@@ -101,8 +101,6 @@ public class ShoppingCartService implements IShoppingCartService {
         this.shoppingCartRepository.save(cart);
         return price.toString();
     }
-
-
 
 
 }

@@ -11,9 +11,4 @@ public class ItemRequest {
     private Long productId;
     private int amount;
 
-    public ItemRequest(Long productId, int amount) {
-        this.productId = productId;
-        this.amount = amount;
-    }
-
 }

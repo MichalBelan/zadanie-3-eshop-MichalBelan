@@ -6,8 +6,8 @@ import lombok.Getter;
 public class AmountResponse {
     private int amount;
 
-    public AmountResponse(Product p) {
-        this.amount = p.getAmount();
+    public AmountResponse(int amount) {
+        this.amount = amount;
 
     }
 }
