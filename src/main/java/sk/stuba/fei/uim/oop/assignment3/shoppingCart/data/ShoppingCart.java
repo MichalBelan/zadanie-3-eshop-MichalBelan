@@ -1,8 +1,8 @@
-package sk.stuba.fei.uim.oop.assignment3.shoppingCart;
+package sk.stuba.fei.uim.oop.assignment3.shoppingCart.data;
 
 import lombok.Getter;
 import lombok.Setter;
-import sk.stuba.fei.uim.oop.assignment3.item.Item;
+import sk.stuba.fei.uim.oop.assignment3.item.data.Item;
 
 import javax.persistence.*;
 import java.util.ArrayList;

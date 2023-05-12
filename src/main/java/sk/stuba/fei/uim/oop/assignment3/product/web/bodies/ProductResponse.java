@@ -1,9 +1,7 @@
-package sk.stuba.fei.uim.oop.assignment3.product;
+package sk.stuba.fei.uim.oop.assignment3.product.web.bodies;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import sk.stuba.fei.uim.oop.assignment3.product.Product;
+import sk.stuba.fei.uim.oop.assignment3.product.data.Product;
 
 @Getter
 public class ProductResponse {

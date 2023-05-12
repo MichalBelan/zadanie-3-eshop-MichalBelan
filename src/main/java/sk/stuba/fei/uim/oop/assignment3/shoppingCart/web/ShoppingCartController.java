@@ -1,10 +1,12 @@
-package sk.stuba.fei.uim.oop.assignment3.shoppingCart;
+package sk.stuba.fei.uim.oop.assignment3.shoppingCart.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import sk.stuba.fei.uim.oop.assignment3.item.ItemRequest;
+import sk.stuba.fei.uim.oop.assignment3.item.web.ItemRequest;
+import sk.stuba.fei.uim.oop.assignment3.shoppingCart.logic.IShoppingCartService;
+import sk.stuba.fei.uim.oop.assignment3.shoppingCart.web.bodies.ShoppingCartResponse;
 
 
 @RestController

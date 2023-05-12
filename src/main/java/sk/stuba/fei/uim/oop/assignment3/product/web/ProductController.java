@@ -1,9 +1,12 @@
-package sk.stuba.fei.uim.oop.assignment3.product;
+package sk.stuba.fei.uim.oop.assignment3.product.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import sk.stuba.fei.uim.oop.assignment3.product.data.Product;
+import sk.stuba.fei.uim.oop.assignment3.product.logic.IProductService;
+import sk.stuba.fei.uim.oop.assignment3.product.web.bodies.*;
 
 import java.util.List;
 import java.util.stream.Collectors;

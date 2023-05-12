@@ -1,15 +1,16 @@
-package sk.stuba.fei.uim.oop.assignment3.shoppingCart;
+package sk.stuba.fei.uim.oop.assignment3.shoppingCart.logic;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sk.stuba.fei.uim.oop.assignment3.exception.BadRequestException;
 import sk.stuba.fei.uim.oop.assignment3.exception.NotFoundException;
-import sk.stuba.fei.uim.oop.assignment3.item.Item;
-import sk.stuba.fei.uim.oop.assignment3.item.ItemRepository;
-import sk.stuba.fei.uim.oop.assignment3.item.ItemRequest;
-import sk.stuba.fei.uim.oop.assignment3.product.IProductService;
-import sk.stuba.fei.uim.oop.assignment3.product.Product;
-
+import sk.stuba.fei.uim.oop.assignment3.item.data.Item;
+import sk.stuba.fei.uim.oop.assignment3.item.data.ItemRepository;
+import sk.stuba.fei.uim.oop.assignment3.item.web.ItemRequest;
+import sk.stuba.fei.uim.oop.assignment3.product.logic.IProductService;
+import sk.stuba.fei.uim.oop.assignment3.product.data.Product;
+import sk.stuba.fei.uim.oop.assignment3.shoppingCart.data.IShoppingCartRepository;
+import sk.stuba.fei.uim.oop.assignment3.shoppingCart.data.ShoppingCart;
 
 
 import java.util.Optional;

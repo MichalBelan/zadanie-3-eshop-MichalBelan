@@ -1,6 +1,7 @@
-package sk.stuba.fei.uim.oop.assignment3.shoppingCart;
+package sk.stuba.fei.uim.oop.assignment3.shoppingCart.logic;
 
-import sk.stuba.fei.uim.oop.assignment3.item.ItemRequest;
+import sk.stuba.fei.uim.oop.assignment3.item.web.ItemRequest;
+import sk.stuba.fei.uim.oop.assignment3.shoppingCart.data.ShoppingCart;
 
 
 public interface IShoppingCartService {

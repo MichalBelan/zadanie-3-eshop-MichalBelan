@@ -1,8 +1,9 @@
-package sk.stuba.fei.uim.oop.assignment3.shoppingCart;
+package sk.stuba.fei.uim.oop.assignment3.shoppingCart.web.bodies;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import sk.stuba.fei.uim.oop.assignment3.item.ItemResponse;
+import sk.stuba.fei.uim.oop.assignment3.item.web.ItemResponse;
+import sk.stuba.fei.uim.oop.assignment3.shoppingCart.data.ShoppingCart;
 
 import java.util.ArrayList;
 import java.util.List;

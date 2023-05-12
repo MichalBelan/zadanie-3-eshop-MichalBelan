@@ -1,4 +1,4 @@
-package sk.stuba.fei.uim.oop.assignment3.item;
+package sk.stuba.fei.uim.oop.assignment3.item.web;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
